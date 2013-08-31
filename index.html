@@ -11,8 +11,9 @@
   </noscript>
 </div>
 
-<a href="javascript:play()"></a>
-<a href="javascript:pause()"></a>
+<a id="play" href="javascript:play()"></a>
+<a id="pause" href="javascript:pause()"></a>
+<input type="range" id="seek" min="0" max="1" step="0.1" value="1">
 
 <script>
   // Map across video elements
@@ -31,7 +32,14 @@
 
   window.onload = function() {
     // Seek to the appropriate places
-    document.querySelector('#videos .back').currentTime = 79.520136 + 19
-    document.querySelector('#videos .top').currentTime =   6.999342 + 19
+    var offsets = {
+      'back': 79.520136,
+      'top':   6.999342
+    }
+    var range = [19, (3746.000512 - offsets.back)]
+    document.querySelector('#videos .back').volume = 0
+    document.querySelector('#videos .top').volume  = 1
+    document.querySelector('#videos .back').currentTime = offsets.back + range[0]
+    document.querySelector('#videos .top').currentTime  = offsets.back + range[0]
   }
 </script>
