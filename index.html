@@ -12,9 +12,23 @@
 </div>
 
 <script>
+  // Map across video elements
+  function map(func) {
+    var videos = document.querySelector('#videos video')
+    var result = []
+    for (var i = 0; i < videos.length; i++) {
+      result.push(func(videos[i]))
+    }
+    return result
+  }
+
+  function play() {
+    map(function(v) { v.play() })
+  }
+
   window.onload = function() {
     // Seek to the appropriate places
-    document.querySelector('#videos .back').currentTime = 79.520136
-    document.querySelector('#videos .top').currentTime = 6.999342
+    document.querySelector('#videos .back').currentTime = 79.520136 + 19
+    document.querySelector('#videos .top').currentTime = 6.999342   + 19
   }
 </script>
