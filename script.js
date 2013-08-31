@@ -53,9 +53,7 @@ window.onload = function() {
   })
   
   function seekFunc() {
-    pause()
     above.currentTime = seek.value
     back.currentTime  = seek.value
-    play()
   }
 }
