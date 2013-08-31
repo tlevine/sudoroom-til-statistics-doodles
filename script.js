@@ -9,10 +9,12 @@ function map(func) {
 }
 
 function play() {
+  console.log('play')
   map(function(v) { v.play() })
 }
 
 function pause() {
+  console.log('pause')
   map(function(v) { v.pause() })
 }
 
@@ -40,10 +42,14 @@ window.onload = function() {
   seek.max = range[1]
   seek.value = range[0]
 
+  seek.addEventListener('blur', pause)
+  seek.addEventListener('mousedown', pause)
   seek.addEventListener('mouseup', seekFunc)
   seek.addEventListener('keyup', seekFunc)
   above.addEventListener('timeupdate', function() {
-    seek.value = above.currentTime
+    if (above.playing) {
+      seek.value = above.currentTime
+    }
   })
   
   function seekFunc() {
