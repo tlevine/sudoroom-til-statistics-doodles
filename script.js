@@ -1,18 +1,17 @@
-function map(func) {
-  var videos = document.querySelectorAll('#videos video')
-  var results = []
-  for (var i = 0; i < videos.length; i++) {
-    results.push(func(videos[i]))
-  }
-  return results
-}
-
 function play() {
-  map(function(v) { return v.play() })
+  var back  = document.querySelector('#videos .back')
+  var above = document.querySelector('#videos .above')
+  above.play()
+  if ((back.currentTime + 1) < back.duration) {
+    back.play()
+  }
 }
 
 function pause() {
-  map(function(v) { return v.pause() })
+  var videos = document.querySelectorAll('#videos video')
+  for (var i = 0; i < videos.length; i++) {
+    videos[i].pause()
+  }
 }
 
 window.onload = function() {
@@ -51,6 +50,6 @@ window.onload = function() {
   
   function seekFunc() {
     above.currentTime = seek.value
-    back.currentTime  = seek.value
+    back.currentTime  = seek.value < back.duration ? seek.value : back.duration
   }
 }
