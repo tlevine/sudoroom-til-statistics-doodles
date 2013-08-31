@@ -1,3 +1,21 @@
+<style>
+  .control {
+    height: auto;
+    border: none;
+  }
+  img.control {
+    width: 9%;
+    max-width: 50px;
+    margin-right: 1%;
+    padding: 0;
+  }
+  input[type=range].control {
+    width: 75%;
+    margin: 0;
+    height: 40px;
+  }
+</style>
+
 <div id="videos">
   <script>
     // Use the local files if it's running locally. Otherwise, use S3
@@ -11,10 +29,10 @@
   </noscript>
 </div>
 
-<div id="controls">
-  <a id="play" href="javascript:play()"><img alt="Play" src="play.jpg" /></a>
-  <a id="pause" href="javascript:pause()"><img alt="Pause" src="pause.jpg" /></a>
-  <input id="seek" type="range" step="0.01">
+<div id="controls" style="width: 320px; background-color: black;">
+  <a id="play" href="javascript:play()"><img class="control" alt="Play" src="play.jpg" /></a>
+  <a id="pause" href="javascript:pause()"><img class="control" alt="Pause" src="pause.jpg" /></a>
+  <input class="control" id="seek" type="range" step="0.01">
 </div>
 
 <script>document.write('<script src="script.js?date="' + (new Date()).getTime() + '"><' + '/script>')</script>
