@@ -1,21 +1,15 @@
-// Map across video elements
-function map(func) {
-  var videos = document.querySelector('#videos video')
-  var result = []
-  for (var i = 0; i < videos.length; i++) {
-    result.push(func(videos[i]))
-  }
-  return result
-}
-
 function play() {
-  console.log('play')
-  map(function(v) { v.play() })
+  var videos = document.querySelectorAll('#videos video')
+  for (var i = 0; i < videos.length; i++) {
+    videos[i].play()
+  }
 }
 
 function pause() {
-  console.log('pause')
-  map(function(v) { v.pause() })
+  var videos = document.querySelectorAll('#videos video')
+  for (var i = 0; i < videos.length; i++) {
+    videos[i].pause()
+  }
 }
 
 window.onload = function() {
