@@ -1,11 +1,20 @@
 <div id="videos">
   <script>
-    var prefix = (window.location.protocol === 'file:' || window.location.host === 'localhost:8000') ? '' : 'http://bigdada.thomaslevine.com/
+    // Use the local files if it's running locally. Otherwise, use S3
+    var prefix = (window.location.protocol === 'file:' || window.location.host === 'localhost:8000') ? '' : 'http://bigdada.thomaslevine.com/'
+    document.write('<video class="back" src="' + prefix + '806d63479fcdb4378b22c6429a839f.webm' + '"></video>')
     document.write('<video class="top" src="' + prefix + '59726f0571c80c5f943b1157a789cf.webm' + '"></video>')
-    document.write('<video class="back" src="' + prefix + '59726f0571c80c5f943b1157a789cf.webm' + '"></video>')
   </script>
   <noscript>
-    <video class="top" src="59726f0571c80c5f943b1157a789cf.webm">
-    <video class="back" src="59726f0571c80c5f943b1157a789cf.webm">
+    <video class="back" src="http://bigdada.thomaslevine.com/806d63479fcdb4378b22c6429a839f.webm"></video>
+    <video class="top" src="http://bigdada.thomaslevine.com/59726f0571c80c5f943b1157a789cf.webm"></video>
   </noscript>
 </div>
+
+<script>
+  window.onload = function() {
+    // Seek to the appropriate places
+    document.querySelector('#videos .back').currentTime = 79.520136
+    document.querySelector('#videos .top').currentTime = 6.999342
+  }
+</script>
