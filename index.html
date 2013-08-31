@@ -3,17 +3,17 @@
     // Use the local files if it's running locally. Otherwise, use S3
     var prefix = (window.location.protocol === 'file:' || window.location.host === 'localhost:8000') ? '' : 'http://bigdada.thomaslevine.com/'
     document.write('<video class="back" src="' + prefix + '806d63479fcdb4378b22c6429a839f.webm' + '"></video>')
-    document.write('<video class="top" src="' + prefix + '59726f0571c80c5f943b1157a789cf.webm' + '"></video>')
+    document.write('<video class="above" src="' + prefix + '59726f0571c80c5f943b1157a789cf.webm' + '"></video>')
   </script>
   <noscript>
     <video class="back" src="http://bigdada.thomaslevine.com/806d63479fcdb4378b22c6429a839f.webm"></video>
-    <video class="top" src="http://bigdada.thomaslevine.com/59726f0571c80c5f943b1157a789cf.webm"></video>
+    <video class="above" src="http://bigdada.thomaslevine.com/59726f0571c80c5f943b1157a789cf.webm"></video>
   </noscript>
 </div>
 
 <a id="play" href="javascript:play()"></a>
 <a id="pause" href="javascript:pause()"></a>
-<input type="range" id="seek" min="0" max="1" step="0.1" value="1">
+<input id="seek" type="range" step="0.01">
 
 <script>
   // Map across video elements
@@ -30,16 +30,45 @@
     map(function(v) { v.play() })
   }
 
+  function pause() {
+    map(function(v) { v.pause() })
+  }
+
   window.onload = function() {
     // Seek to the appropriate places
     var offsets = {
       'back': 79.520136,
-      'top':   6.999342
+      'above':   6.999342
     }
     var range = [19, (3746.000512 - offsets.back)]
-    document.querySelector('#videos .back').volume = 0
-    document.querySelector('#videos .top').volume  = 1
-    document.querySelector('#videos .back').currentTime = offsets.back + range[0]
-    document.querySelector('#videos .top').currentTime  = offsets.back + range[0]
+
+    // Video elements
+    var back  = document.querySelector('#videos .back')
+    var above = document.querySelector('#videos .above')
+    var seek  = document.querySelector('#seek')
+
+    // Synchronize videos
+    back.volume  = 0
+    above.volume = 1
+    back.currentTime  = offsets.back + range[0]
+    above.currentTime = offsets.back + range[0]
+
+    // Seek bar
+    seek.min = range[0]
+    seek.max = range[1]
+    seek.value = range[0]
+
+    seek.addEventListener('mouseup', seekFunc)
+    seek.addEventListener('keyup', seekFunc)
+    above.addEventListener('timeupdate', function() {
+      seek.value = above.currentTime
+    })
+    
+    function seekFunc() {
+      pause()
+      above.currentTime = seek.value
+      back.currentTime  = seek.value
+      play()
+    }
   }
 </script>
