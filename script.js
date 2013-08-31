@@ -1,15 +1,18 @@
-function play() {
+function map(func) {
   var videos = document.querySelectorAll('#videos video')
+  var results = []
   for (var i = 0; i < videos.length; i++) {
-    videos[i].play()
+    results.push(func(videos[i]))
   }
+  return results
+}
+
+function play() {
+  map(function(v) { return v.play() })
 }
 
 function pause() {
-  var videos = document.querySelectorAll('#videos video')
-  for (var i = 0; i < videos.length; i++) {
-    videos[i].pause()
-  }
+  map(function(v) { return v.pause() })
 }
 
 window.onload = function() {
