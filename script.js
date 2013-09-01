@@ -17,8 +17,8 @@ function pause() {
 window.onload = function() {
   // Seek to the appropriate places
   var offsets = {
-    'back': 79.520136,
-    'above':   6.999342
+    'back':  79.520136,
+    'above':  6.999342
   }
   var range = [19, (3746.000512 - offsets.back)]
 
@@ -30,8 +30,8 @@ window.onload = function() {
   // Synchronize videos
   back.volume  = 0
   above.volume = 1
-  back.currentTime  = offsets.back + range[0]
-  above.currentTime = offsets.back + range[0]
+  back.currentTime  = offsets.back  + range[0]
+  above.currentTime = offsets.above + range[0]
 
   // Seek bar
   seek.min = range[0]
