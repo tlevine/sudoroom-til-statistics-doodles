@@ -16,24 +16,33 @@ function pause() {
 
 window.onload = function() {
   // Seek to the appropriate places
-  var offsets = {
-    'back':  79.520136 + 19,
-    'above':  6.999342 + 19
+  var length = 3746.000512 - 79
+  var _set = function(element, offset) {
+    return function(x) {
+      if (x > 1 || x < 0) {
+        throw 'x must be between 0 and 1'
+      }
+      element.currentTime = offset + x * length
+    }
   }
-  var length = 3746.000512 - offsets.back + 19
 
-  // Video elements
-  var back  = document.querySelector('#videos .back')
+  var back = document.querySelector('#videos .back')
   var above = document.querySelector('#videos .above')
-  var seek  = document.querySelector('#seek')
+    
+  // Seek functions
+  var setBack = _set(back, 79.520136)
+  var setAbove= _set(above, 6.999342)
+
+  // Volume
+  back.volume = 0
+  above.volume = 1
 
   // Synchronize videos
-  back.volume  = 0
-  above.volume = 1
-  back.currentTime  = offsets.back
-  above.currentTime = offsets.above
+  setBack(0)
+  setAbove(0)
 
   // Seek bar
+  var seek  = document.querySelector('#seek')
   seek.addEventListener('blur', pause)
   seek.addEventListener('mousedown', pause)
   seek.addEventListener('mouseup', seekFunc)
@@ -45,7 +54,7 @@ window.onload = function() {
   })
   
   function seekFunc() {
-    above.currentTime = length * seek.value + offsets.above
-    back.currentTime  = seek.value < ((back.duration - offsets.back)/ above.duration) ? length * seek.value + offsets.back: back.duration
+    setAbove(seek.value)
+    setBack(Math.min(seek.value, 1))
   }
 }
