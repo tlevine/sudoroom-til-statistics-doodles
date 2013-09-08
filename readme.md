@@ -2,13 +2,14 @@
 title: Today I learned about statistics through doodles
 ---
 Here are some videos from the
-[time I doodled about statistics]()
-in [Sudoroom]().
+[time I doodled about statistics](https://sudoroom.org/wiki/Today_I_Learned#July_20:_Statistics_through_doodles:_Geometric_computations_of_fundamental_statistical_concepts)
+in [Sudoroom](http://sudoroom.org/).
 
 ## What is a statistic?
-A statistic is a number that describes a lot of other numbers;
-by reducing many numbers into one number, we make it easier to
-fit all of these numbers in our brain.
+A statistic is a number that describes a lot of other numbers.
+By reducing many numbers into one number, we make it easier to
+figure out what the numbers mean; we wouldn't be able to fit all
+of the original in our brain.
 
 ## Geometric computations
 In this session, I geometrically computed four statistics
@@ -34,7 +35,7 @@ One such relationship is that between a person's height and weight;
 taller people are heavier, and shorter people are lighter.
 
 A relationship that isn't very linear might be 
-[public transit ridership and time]().
+[public transit ridership and time](/!/ridership-rachenitsa).
 As time progresses, weekly public transit ridership stays the same.
 However, it does change a lot within the week, with high ridership
 on the weekdays, low ridership on Saturdays and lower ridership on Sundays.
@@ -110,3 +111,13 @@ first need to measure the heights and weights of a bunch of people.
 
 Once we calculate these two numbers, we have a formula for predicting height;
 you give the formula a weight, and it will give you back a predicted height.
+
+## Statistics and math and doodles
+Statistics lets us distill our complex observations of the world into simple
+numbers that are easier to understand. Covariance, variance, correlation
+and least-squares regression are some statistics that are commonly used. The
+text explains why we use them, and the video explains how we calculate them.
+
+The formulae for these statistics get a bit confusing when you write them
+out as symbols, but math can always be drawn, and it usually makes more sense
+that way.
