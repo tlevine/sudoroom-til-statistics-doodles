@@ -1,7 +1,7 @@
 ---
 title: Today I learned about statistics through doodles
 ---
-Here are some videos of the
+Here are some videos from the
 [time I doodled about statistics]()
 in [Sudoroom]().
 
