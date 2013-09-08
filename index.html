@@ -16,12 +16,6 @@
   }
 </style>
 
-<div id="controls">
-  <a id="play" href="javascript:play()"><img class="control" alt="Play" src="play.jpg" /></a>
-  <a id="pause" href="javascript:pause()"><img class="control" alt="Pause" src="pause.jpg" /></a>
-  <input class="control" id="seek" type="range" min="0" max="1" value="0" step="0.01">
-</div>
-
 <div id="videos">
   <script>
     // Use the local files if it's running locally. Otherwise, use S3
@@ -33,6 +27,12 @@
     <video class="back" src="http://bigdada.thomaslevine.com/til-statistics-back.webm"></video>
     <video class="above" src="http://bigdada.thomaslevine.com/til-statistics-above.webm"></video>
   </noscript>
+</div>
+
+<div id="controls">
+  <a id="play" href="javascript:play()"><img class="control" alt="Play" src="play.jpg" /></a>
+  <a id="pause" href="javascript:pause()"><img class="control" alt="Pause" src="pause.jpg" /></a>
+  <input class="control" id="seek" type="range" min="0" max="1" value="0" step="0.01">
 </div>
 
 <script>document.write('<script src="script.js?date=' + (new Date()).getTime() + '"><' + '/script>')</script>
